@@ -16,7 +16,7 @@ io.on("connection", (socket) => {
     console.log("[*] New user connected", data.name);
     connectedUsers = [...connectedUsers, { name: data.name, id: socket.id }];
     io.emit("connectedUsers", connectedUsers);
-    io.emit("me", socket.id);
+    socket.emit("me", socket.id);
   });
 
   socket.on("disconnect", () => {
